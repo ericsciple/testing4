@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo hello from my bash script
+g++ -g hello_world.cpp -o hello_world
