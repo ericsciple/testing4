@@ -12,8 +12,9 @@ jobs:
           - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - run: |
-          ping -c 60 127.0.0.1
+      - if: ${{ if matrix.os == 'ubuntu-latest ' }}
+        run: |
+          ping -c 30 127.0.0.1
 
       # Clone
       - uses: actions/checkout@v4
