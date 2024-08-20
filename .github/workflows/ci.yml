@@ -1,6 +1,31 @@
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
     steps:
-      - run: echo hi
+      # Clone
+      - uses: actions/checkout@v4
+
+      # Build
+      - shell: bash
+        run: ./build.sh
+
+      # Test
+      - shell: bash
+        run: ./test.sh
+
+      # Passed?
+      - run: echo Yay, it passed!
+
+      # Failed?
+      - if: ${{ failure() }}
+        run: echo Shit, it failed :(
