@@ -12,7 +12,7 @@ jobs:
           - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - if: ${{ if matrix.os == 'ubuntu-latest ' }}
+      - if: ${{ matrix.os == 'ubuntu-latest ' }}
         run: |
           ping -c 30 127.0.0.1
 
