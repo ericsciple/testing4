@@ -4,4 +4,4 @@ set -ex
 
 ./hello_world | tee output.log
 
-grep --fixed-strings 'Hello, world!' output.log
+grep --color --fixed-strings 'Hello, world!' output.log
