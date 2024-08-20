@@ -1,4 +1,7 @@
 #!/bin/bash
 
-echo simulate a test error 1>&2
-exit 0
+set -ex
+
+./hello_world | tee output.log
+
+grep --color --fixed-strings 'Hello, world!' output.log
